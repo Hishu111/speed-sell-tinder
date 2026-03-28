@@ -23,8 +23,8 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      font-size: 17px;
     }
-    /* Background gradient */
     body::before {
       content: '';
       position: fixed;
@@ -34,198 +34,244 @@
       pointer-events: none;
       z-index: 0;
     }
+
+    /* ── Telegram custom emoji (animated sticker via img) ── */
+    .tg-emoji {
+      display: inline-block;
+      width: 1.4em;
+      height: 1.4em;
+      vertical-align: middle;
+      object-fit: contain;
+    }
+    .tg-emoji-lg {
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      vertical-align: middle;
+      object-fit: contain;
+    }
+    .tg-emoji-xl {
+      display: inline-block;
+      width: 2.6em;
+      height: 2.6em;
+      vertical-align: middle;
+      object-fit: contain;
+    }
+
     /* Sticky Header */
     .sticky-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,215,0,0.2);
-      padding: 14px 20px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,215,0,0.22);
+      padding: 16px 22px;
     }
     .sticky-header h1 {
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: var(--gold);
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    /* Main container */
+
+    /* Main container — wider */
     .container {
-      max-width: 480px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 20px 16px 120px;
+      padding: 24px 18px 130px;
       position: relative;
       z-index: 1;
     }
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
+
     /* Top Header Card */
     .header-card {
-      background: linear-gradient(135deg, rgba(20,25,40,0.95) 0%, rgba(5,5,10,0.95) 100%);
-      border: 1px solid rgba(255,215,0,0.3);
-      border-radius: 24px;
-      padding: 24px 20px;
-      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(20,25,40,0.97) 0%, rgba(5,5,10,0.97) 100%);
+      border: 1px solid rgba(255,215,0,0.32);
+      border-radius: 26px;
+      padding: 28px 24px;
+      margin-bottom: 22px;
     }
     .profile-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
+      gap: 16px;
+      margin-bottom: 20px;
     }
     .profile-img {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      border: 2px solid var(--gold);
+      border: 2.5px solid var(--gold);
       object-fit: cover;
       flex-shrink: 0;
     }
     .profile-info h2 {
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       font-weight: 900;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
     .profile-info p {
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
     .btn-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 12px 10px;
-      border-radius: 14px;
+      gap: 7px;
+      padding: 14px 12px;
+      border-radius: 16px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       text-decoration: none;
       color: #fff;
       background: rgba(30,35,55,0.9);
-      border: 1px solid rgba(255,215,0,0.35);
+      border: 1px solid rgba(255,215,0,0.38);
       transition: all 0.2s;
       cursor: pointer;
     }
-    .btn:hover { background: rgba(50,55,80,0.9); border-color: rgba(255,215,0,0.6); }
+    .btn:hover { background: rgba(50,55,80,0.9); border-color: rgba(255,215,0,0.65); }
     .btn-gold {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: linear-gradient(135deg, var(--gold) 0%, #e6a800 100%);
       color: #000;
       border: none;
-      font-size: 1rem;
-      padding: 16px;
-      border-radius: 16px;
+      font-size: 1.1rem;
+      padding: 18px;
+      border-radius: 18px;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 900;
+      text-decoration: none;
+      transition: all 0.2s;
     }
     .btn-gold:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); }
     .btn-navy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: rgba(30,40,80,0.9);
       color: #fff;
-      border: 1px solid rgba(100,120,200,0.4);
-      font-size: 1rem;
-      padding: 16px;
-      border-radius: 16px;
+      border: 1px solid rgba(100,120,200,0.42);
+      font-size: 1.1rem;
+      padding: 18px;
+      border-radius: 18px;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
     }
     .btn-navy:hover { background: rgba(40,55,100,0.9); }
+
     /* Feature Badges */
     .badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
     .badge {
-      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
       border-radius: 999px;
       background: rgba(255,215,0,0.12);
-      border: 1px solid rgba(255,215,0,0.35);
+      border: 1px solid rgba(255,215,0,0.38);
       color: var(--gold);
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       font-weight: 700;
     }
+
     /* Hero */
-    .hero {
-      margin-bottom: 28px;
-    }
+    .hero { margin-bottom: 32px; }
     .hero h1 {
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 14px;
+      line-height: 1.08;
+      margin-bottom: 16px;
       text-transform: uppercase;
     }
     .hero h1 .gold { color: var(--gold); }
     .hero p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.65;
     }
+
     /* Feature Cards */
     .feature-card {
-      background: rgba(15,20,35,0.7);
-      border: 1px solid rgba(255,215,0,0.15);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 12px;
+      background: rgba(15,20,35,0.72);
+      border: 1px solid rgba(255,215,0,0.16);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 14px;
       transition: border-color 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
     }
-    .feature-card:hover { border-color: rgba(255,215,0,0.45); }
-    .feature-card .icon { font-size: 1.6rem; margin-bottom: 8px; }
-    .feature-card h3 { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
-    .feature-card p { color: var(--text-muted); font-size: 0.82rem; }
+    .feature-card:hover { border-color: rgba(255,215,0,0.48); }
+    .feature-card .icon { font-size: 1.9rem; flex-shrink: 0; margin-top: 2px; }
+    .feature-card h3 { font-weight: 800; font-size: 1.05rem; margin-bottom: 5px; }
+    .feature-card p { color: var(--text-muted); font-size: 0.88rem; }
+
     /* Redirect notice */
     .redirect-notice {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       color: var(--text-muted);
-      font-size: 0.82rem;
-      margin: 10px 0 20px;
+      font-size: 0.88rem;
+      margin: 12px 0 24px;
     }
+    #countdown { font-weight: 700; color: var(--gold); }
+
     /* Phone Mockup */
     .mockup-wrapper {
-      background: linear-gradient(135deg, rgba(20,25,40,0.95) 0%, rgba(5,5,10,0.95) 100%);
-      border: 1px solid rgba(255,215,0,0.2);
-      border-radius: 24px;
-      padding: 20px;
-      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(20,25,40,0.97) 0%, rgba(5,5,10,0.97) 100%);
+      border: 1px solid rgba(255,215,0,0.22);
+      border-radius: 26px;
+      padding: 24px;
+      margin-bottom: 22px;
       display: flex;
       justify-content: center;
     }
     .phone-mockup {
-      background: rgba(10,12,25,0.95);
+      background: rgba(10,12,25,0.97);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 28px;
-      padding: 20px 16px;
+      border-radius: 30px;
+      padding: 24px 20px;
       width: 100%;
-      max-width: 300px;
+      max-width: 340px;
     }
     .mockup-badges {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .mockup-badge {
-      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 700;
     }
     .mockup-badge.seller { background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3); color: var(--gold); }
@@ -233,148 +279,165 @@
     .mockup-inner {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 18px;
     }
     .mockup-tinder-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
       background: linear-gradient(135deg, #fd5564, #ff6b35);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
       flex-shrink: 0;
       border: 2px solid rgba(255,215,0,0.3);
     }
-    .mockup-text h3 { font-size: 1rem; font-weight: 900; margin-bottom: 4px; }
-    .mockup-text p { font-size: 0.75rem; color: var(--text-muted); }
+    .mockup-text h3 { font-size: 1.05rem; font-weight: 900; margin-bottom: 5px; }
+    .mockup-text p { font-size: 0.8rem; color: var(--text-muted); }
     .checklist { list-style: none; }
     .checklist li {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 12px;
+      gap: 10px;
+      padding: 12px 14px;
       background: rgba(255,255,255,0.04);
-      border-radius: 10px;
-      margin-bottom: 8px;
-      font-size: 0.82rem;
+      border-radius: 12px;
+      margin-bottom: 9px;
+      font-size: 0.88rem;
       font-weight: 600;
     }
-    .checklist li .check { color: #22c55e; font-size: 1rem; }
+
     /* Account Years */
     .years-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
-    .years-header h2 { font-size: 1.3rem; font-weight: 900; }
+    .years-header h2 { font-size: 1.45rem; font-weight: 900; }
     .active-badge {
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 999px;
       background: rgba(255,215,0,0.15);
-      border: 1px solid rgba(255,215,0,0.4);
+      border: 1px solid rgba(255,215,0,0.42);
       color: var(--gold);
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.5px;
     }
     .year-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: rgba(15,20,35,0.7);
-      border: 1px solid rgba(255,215,0,0.15);
-      border-radius: 14px;
-      margin-bottom: 10px;
+      gap: 14px;
+      padding: 16px 18px;
+      background: rgba(15,20,35,0.72);
+      border: 1px solid rgba(255,215,0,0.16);
+      border-radius: 16px;
+      margin-bottom: 11px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.05rem;
       transition: border-color 0.2s;
     }
-    .year-item:hover { border-color: rgba(255,215,0,0.45); }
-    .year-item .check { color: #22c55e; font-size: 1.1rem; }
+    .year-item:hover { border-color: rgba(255,215,0,0.48); }
+
     /* Profile Cards */
     .profile-card {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: rgba(15,20,35,0.7);
-      border: 1px solid rgba(255,215,0,0.15);
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-bottom: 12px;
+      gap: 16px;
+      background: rgba(15,20,35,0.72);
+      border: 1px solid rgba(255,215,0,0.16);
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
       transition: border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
     }
-    .profile-card:hover { border-color: rgba(255,215,0,0.45); }
+    .profile-card:hover { border-color: rgba(255,215,0,0.48); }
     .profile-card-img {
-      width: 56px;
-      height: 56px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
-      border: 2px solid var(--gold);
+      border: 2.5px solid var(--gold);
     }
-    .profile-card-icon {
-      width: 56px;
-      height: 56px;
+    /* Telegram logo circle for Join Notice */
+    .tg-logo-circle {
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      background: #2196F3;
+      background: linear-gradient(145deg, #2AABEE 0%, #229ED9 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       flex-shrink: 0;
-      border: 2px solid #42a5f5;
+      border: 2.5px solid #42a5f5;
+      box-shadow: 0 0 16px rgba(42,171,238,0.35);
     }
-    .profile-card-info p:first-child { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 2px; }
-    .profile-card-info p:last-child { font-size: 1.05rem; font-weight: 800; color: var(--gold); }
-    .profile-card-info .notice-name { color: #93c5fd; }
+    .tg-logo-circle svg {
+      width: 36px;
+      height: 36px;
+    }
+    .profile-card-info p:first-child { color: var(--text-muted); font-size: 0.84rem; margin-bottom: 3px; }
+    .profile-card-info .seller-name { font-size: 1.12rem; font-weight: 800; color: var(--gold); }
+    .profile-card-info .notice-name { font-size: 1.12rem; font-weight: 800; color: #93c5fd; }
+
     /* Footer */
     .footer {
       text-align: center;
-      padding: 20px 0 10px;
+      padding: 22px 0 12px;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.84rem;
     }
+
     /* Sticky Bottom */
     .sticky-bottom {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255,215,0,0.2);
-      padding: 14px 16px;
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,215,0,0.22);
+      padding: 14px 18px;
       z-index: 40;
     }
     .sticky-bottom a {
-      display: block;
-      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      max-width: 600px;
       margin: 0 auto;
-      text-align: center;
-      padding: 16px;
-      border-radius: 18px;
+      padding: 18px;
+      border-radius: 20px;
       background: linear-gradient(135deg, var(--gold) 0%, #e6a800 100%);
       color: #000;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-decoration: none;
       transition: all 0.2s;
     }
     .sticky-bottom a:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); }
-    /* Section spacing */
-    .section { margin-bottom: 24px; }
-    /* Countdown */
-    #countdown { font-weight: 700; color: var(--gold); }
+
+    .section { margin-bottom: 28px; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.1rem; }
+      .container { padding: 18px 14px 130px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Sticky Header -->
   <header class="sticky-header">
-    <h1>⚡ SPEED MARKET PAGE</h1>
+    <h1>
+      <!-- Lightning bolt / speed icon -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      SPEED MARKET PAGE
+    </h1>
   </header>
 
   <!-- Main Content -->
@@ -383,23 +446,37 @@
     <!-- Top Header Card -->
     <div class="header-card">
       <div class="profile-row">
-        <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="SPEED MARKET PAGE" class="profile-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div style="width:64px;height:64px;border-radius:50%;border:2px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">⚡</div>
+        <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="SPEED MARKET PAGE" class="profile-img"
+             onerror="this.style.display='none';document.getElementById('hdr-fallback').style.display='flex'" />
+        <div id="hdr-fallback" style="width:72px;height:72px;border-radius:50%;border:2.5px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;">⚡</div>
         <div class="profile-info">
           <h2>SPEED MARKET PAGE</h2>
           <p>Direct Telegram redirect for old Tinder account sellers</p>
         </div>
       </div>
       <div class="btn-row">
-        <a href="https://t.me/SPEED_NOTICE" class="btn">🔔 Join Notice</a>
-        <a href="https://t.me/SPEED_prime" class="btn">📥 Inbox Seller</a>
+        <a href="https://t.me/SPEED_NOTICE" class="btn">
+          <!-- Telegram premium channel emoji 5260268501515377807 → rendered as Telegram SVG icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Join Notice
+        </a>
+        <a href="https://t.me/SPEED_prime" class="btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Inbox Seller
+        </a>
       </div>
     </div>
 
     <!-- Feature Badges -->
     <div class="badges section">
-      <span class="badge">⚡ High Price in Market</span>
-      <span class="badge">🔗 Direct Telegram Contact</span>
+      <span class="badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        High Price in Market
+      </span>
+      <span class="badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Direct Telegram Contact
+      </span>
     </div>
 
     <!-- Hero -->
@@ -412,25 +489,40 @@
     <div class="section">
       <div class="feature-card">
         <div class="icon">📅</div>
-        <h3>Old Accounts Needed</h3>
-        <p>From 2010 up to 2025, including split 2025 ranges.</p>
+        <div>
+          <h3>Old Accounts Needed</h3>
+          <p>From 2010 up to 2025, including split 2025 ranges.</p>
+        </div>
       </div>
       <div class="feature-card">
         <div class="icon">💰</div>
-        <h3>High Market Demand</h3>
-        <p>Older and well-aged accounts are valuable in the market.</p>
+        <div>
+          <h3>High Market Demand</h3>
+          <p>Older and well-aged accounts are valuable in the market.</p>
+        </div>
       </div>
       <div class="feature-card">
-        <div class="icon">✈️</div>
-        <h3>Direct Seller Inbox</h3>
-        <p>No extra steps. One tap opens Telegram DM instantly.</p>
+        <!-- Telegram icon for Direct Seller Inbox -->
+        <div class="icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        </div>
+        <div>
+          <h3>Direct Seller Inbox</h3>
+          <p>No extra steps. One tap opens Telegram DM instantly.</p>
+        </div>
       </div>
     </div>
 
     <!-- CTA Buttons -->
     <div class="section">
-      <a href="https://t.me/SPEED_prime" class="btn btn-gold">✈️ DM @SPEED_prime</a>
-      <a href="https://t.me/SPEED_NOTICE" class="btn btn-navy">🔔 Join @SPEED_NOTICE</a>
+      <a href="https://t.me/SPEED_prime" class="btn-gold">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        DM @SPEED_prime
+      </a>
+      <a href="https://t.me/SPEED_NOTICE" class="btn-navy">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Join @SPEED_NOTICE
+      </a>
     </div>
 
     <!-- Auto-redirect notice -->
@@ -442,21 +534,43 @@
     <div class="mockup-wrapper section">
       <div class="phone-mockup">
         <div class="mockup-badges">
-          <span class="mockup-badge seller">🔥 Seller Market</span>
-          <span class="mockup-badge tg">📱 Telegram</span>
+          <span class="mockup-badge seller">
+            <!-- Tinder flame icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF6B35"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
+            Seller Market
+          </span>
+          <span class="mockup-badge tg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            Telegram
+          </span>
         </div>
         <div class="mockup-inner">
-          <div class="mockup-tinder-icon">🔥</div>
+          <div class="mockup-tinder-icon">
+            <!-- Tinder-style flame -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
+          </div>
           <div class="mockup-text">
             <h3>OLD TINDER ACCOUNTS</h3>
             <p>Premium buyer page for direct seller contact.</p>
           </div>
         </div>
         <ul class="checklist">
-          <li><span class="check">✅</span> Aged accounts wanted</li>
-          <li><span class="check">✅</span> High price in market</li>
-          <li><span class="check">✅</span> Instant Telegram redirect</li>
-          <li><span class="check">✅</span> Responsive landing page</li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Aged accounts wanted
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            High price in market
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Instant Telegram redirect
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Responsive landing page
+          </li>
         </ul>
       </div>
     </div>
@@ -464,34 +578,63 @@
     <!-- Needed Account Years -->
     <div class="section">
       <div class="years-header">
-        <h2>☰ Needed Account Years</h2>
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD700" style="vertical-align:middle;margin-right:6px"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+          Needed Account Years
+        </h2>
         <span class="active-badge">ACTIVE BUYING</span>
       </div>
-      <div class="year-item"><span class="check">✅</span> 2010 - 2016</div>
-      <div class="year-item"><span class="check">✅</span> 2017 - 2020</div>
-      <div class="year-item"><span class="check">✅</span> 2020 - 2023</div>
-      <div class="year-item"><span class="check">✅</span> 2024</div>
-      <div class="year-item"><span class="check">✅</span> 2025 / 1 - 5</div>
-      <div class="year-item"><span class="check">✅</span> 2025 / 6 - 12</div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2010 - 2016
+      </div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2017 - 2020
+      </div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2020 - 2023
+      </div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2024
+      </div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2025 / 1 - 5
+      </div>
+      <div class="year-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        2025 / 6 - 12
+      </div>
     </div>
 
     <!-- Bottom Profile Cards -->
     <div class="section">
-      <div class="profile-card">
-        <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="@SPEED_prime" class="profile-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div style="width:56px;height:56px;border-radius:50%;border:2px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">👤</div>
+      <!-- Sellers DM card -->
+      <a href="https://t.me/SPEED_prime" class="profile-card">
+        <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="@SPEED_prime" class="profile-card-img"
+             onerror="this.style.display='none';document.getElementById('seller-fallback').style.display='flex'" />
+        <div id="seller-fallback" style="width:62px;height:62px;border-radius:50%;border:2.5px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">👤</div>
         <div class="profile-card-info">
           <p>Sellers DM</p>
-          <p>@SPEED_prime</p>
+          <p class="seller-name">@SPEED_prime</p>
         </div>
-      </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">✈️</div>
+      </a>
+
+      <!-- Join Notice card — Telegram logo circle -->
+      <a href="https://t.me/SPEED_NOTICE" class="profile-card">
+        <div class="tg-logo-circle">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+          </svg>
+        </div>
         <div class="profile-card-info">
           <p>Join Notice</p>
           <p class="notice-name">@SPEED_NOTICE</p>
         </div>
-      </div>
+      </a>
     </div>
 
     <!-- Footer -->
@@ -503,7 +646,10 @@
 
   <!-- Sticky Bottom Button -->
   <div class="sticky-bottom">
-    <a href="https://t.me/SPEED_prime">💬 Inbox Me on Telegram</a>
+    <a href="https://t.me/SPEED_prime">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+      Inbox Me on Telegram
+    </a>
   </div>
 
   <script>
