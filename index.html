@@ -5,436 +5,521 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SPEED SELL OLD TINDER ACCOUNTS</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
       --gold: #FFD700;
       --gold-dark: #B8860B;
       --gold-light: #FFE55C;
       --bg: #000000;
-      --card-bg: rgba(15, 20, 35, 0.85);
-      --card-border: rgba(255, 215, 0, 0.25);
       --text: #ffffff;
       --text-muted: #9ca3af;
-      --blue: #3b82f6;
+      --blue: #2AABEE;
+      --green: #22c55e;
+      --card-bg: rgba(14, 18, 32, 0.88);
+      --card-border: rgba(255, 215, 0, 0.22);
     }
+
+    html { scroll-behavior: smooth; }
+
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
-      font-size: 17px;
+      perspective: 1200px;
     }
-    body::before {
-      content: '';
+
+    /* ── Animated background ── */
+    .bg-layer {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at top left, rgba(80,0,0,0.35) 0%, transparent 60%),
-                  radial-gradient(ellipse at bottom right, rgba(30,0,60,0.35) 0%, transparent 60%);
-      pointer-events: none;
+      inset: 0;
       z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 10%, rgba(100,0,0,0.38) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 90% 90%, rgba(40,0,80,0.38) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(20,20,50,0.5) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Floating particles */
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,215,0,0.12);
+      animation: float linear infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* ── Telegram custom emoji (animated sticker via img) ── */
-    .tg-emoji {
-      display: inline-block;
-      width: 1.4em;
-      height: 1.4em;
-      vertical-align: middle;
-      object-fit: contain;
-    }
-    .tg-emoji-lg {
-      display: inline-block;
-      width: 2em;
-      height: 2em;
-      vertical-align: middle;
-      object-fit: contain;
-    }
-    .tg-emoji-xl {
-      display: inline-block;
-      width: 2.6em;
-      height: 2.6em;
-      vertical-align: middle;
-      object-fit: contain;
-    }
-
-    /* Sticky Header */
+    /* ── Sticky Header ── */
     .sticky-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,215,0,0.22);
-      padding: 16px 22px;
+      z-index: 100;
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,215,0,0.18);
+      padding: 16px 28px;
     }
     .sticky-header h1 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 900;
       color: var(--gold);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.4);
     }
 
-    /* Main container — wider */
+    /* ── Main container ── */
     .container {
-      max-width: 600px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 24px 18px 130px;
+      padding: 30px 22px 140px;
       position: relative;
       z-index: 1;
     }
 
-    /* Top Header Card */
+    /* ── Scroll-reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) rotateX(6deg);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+    }
+
+    /* ── 3D Card base ── */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .card-3d:hover {
+      transform: translateY(-6px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+      box-shadow: 0 24px 60px rgba(255,215,0,0.18), 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* ── Top Header Card ── */
     .header-card {
-      background: linear-gradient(135deg, rgba(20,25,40,0.97) 0%, rgba(5,5,10,0.97) 100%);
+      background: linear-gradient(135deg, rgba(22,28,48,0.97) 0%, rgba(6,6,14,0.97) 100%);
       border: 1px solid rgba(255,215,0,0.32);
-      border-radius: 26px;
-      padding: 28px 24px;
-      margin-bottom: 22px;
+      border-radius: 28px;
+      padding: 30px 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 40px rgba(255,215,0,0.1), inset 0 1px 0 rgba(255,215,0,0.1);
     }
     .profile-row {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 18px;
+      margin-bottom: 22px;
     }
     .profile-img {
-      width: 72px;
-      height: 72px;
+      width: 78px;
+      height: 78px;
       border-radius: 50%;
-      border: 2.5px solid var(--gold);
+      border: 3px solid var(--gold);
       object-fit: cover;
       flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(255,215,0,0.35);
     }
     .profile-info h2 {
-      font-size: 1.35rem;
+      font-size: 1.45rem;
       font-weight: 900;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      text-shadow: 0 0 16px rgba(255,215,0,0.3);
     }
-    .profile-info p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-    .btn-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .profile-info p { font-size: 0.9rem; color: var(--text-muted); }
+    .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 14px 12px;
+      gap: 8px;
+      padding: 15px 14px;
       border-radius: 16px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       text-decoration: none;
       color: #fff;
-      background: rgba(30,35,55,0.9);
+      background: rgba(28,34,58,0.92);
       border: 1px solid rgba(255,215,0,0.38);
-      transition: all 0.2s;
-      cursor: pointer;
+      transition: all 0.25s;
     }
-    .btn:hover { background: rgba(50,55,80,0.9); border-color: rgba(255,215,0,0.65); }
+    .btn:hover {
+      background: rgba(50,58,90,0.95);
+      border-color: rgba(255,215,0,0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,215,0,0.15);
+    }
+
+    /* ── Feature Badges ── */
+    .badges { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.38);
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.25s;
+    }
+    .badge:hover {
+      background: rgba(255,215,0,0.18);
+      box-shadow: 0 0 16px rgba(255,215,0,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ── Hero ── */
+    .hero { margin-bottom: 36px; }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.06;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+    .hero h1 .gold {
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(255,215,0,0.5);
+    }
+    .hero p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+
+    /* ── Feature Cards ── */
+    .feature-card {
+      background: rgba(14,18,32,0.75);
+      border: 1px solid rgba(255,215,0,0.16);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .feature-card:hover {
+      border-color: rgba(255,215,0,0.5);
+      background: rgba(22,28,48,0.9);
+      transform: translateX(6px);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.12);
+    }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.8rem;
+    }
+    .feature-icon.calendar { background: linear-gradient(135deg, #1a3a5c, #0d2040); border: 1px solid rgba(42,171,238,0.3); }
+    .feature-icon.money { background: linear-gradient(135deg, #3a2800, #1a1200); border: 1px solid rgba(255,215,0,0.3); }
+    .feature-icon.telegram-icon { background: linear-gradient(135deg, #0d2a40, #061520); border: 1px solid rgba(42,171,238,0.3); }
+    .feature-card h3 { font-weight: 800; font-size: 1.08rem; margin-bottom: 6px; }
+    .feature-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── CTA Buttons ── */
     .btn-gold {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--gold) 0%, #e6a800 100%);
+      gap: 10px;
+      background: linear-gradient(135deg, #FFD700 0%, #e6a800 50%, #FFD700 100%);
+      background-size: 200% auto;
       color: #000;
       border: none;
-      font-size: 1.1rem;
-      padding: 18px;
-      border-radius: 18px;
+      font-size: 1.15rem;
+      padding: 20px;
+      border-radius: 20px;
       width: 100%;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-weight: 900;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(255,215,0,0.3);
+      animation: shimmer 3s linear infinite;
     }
-    .btn-gold:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); }
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(255,215,0,0.45);
+    }
     .btn-navy {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: rgba(30,40,80,0.9);
+      gap: 10px;
+      background: rgba(28,38,88,0.92);
       color: #fff;
-      border: 1px solid rgba(100,120,200,0.42);
-      font-size: 1.1rem;
-      padding: 18px;
-      border-radius: 18px;
+      border: 1px solid rgba(42,171,238,0.4);
+      font-size: 1.15rem;
+      padding: 20px;
+      border-radius: 20px;
       width: 100%;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-weight: 700;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(42,171,238,0.1);
     }
-    .btn-navy:hover { background: rgba(40,55,100,0.9); }
-
-    /* Feature Badges */
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,215,0,0.12);
-      border: 1px solid rgba(255,215,0,0.38);
-      color: var(--gold);
-      font-size: 0.88rem;
-      font-weight: 700;
+    .btn-navy:hover {
+      background: rgba(38,52,110,0.95);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(42,171,238,0.25);
     }
 
-    /* Hero */
-    .hero { margin-bottom: 32px; }
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      line-height: 1.08;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-    .hero h1 .gold { color: var(--gold); }
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    /* Feature Cards */
-    .feature-card {
-      background: rgba(15,20,35,0.72);
-      border: 1px solid rgba(255,215,0,0.16);
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 14px;
-      transition: border-color 0.2s;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .feature-card:hover { border-color: rgba(255,215,0,0.48); }
-    .feature-card .icon { font-size: 1.9rem; flex-shrink: 0; margin-top: 2px; }
-    .feature-card h3 { font-weight: 800; font-size: 1.05rem; margin-bottom: 5px; }
-    .feature-card p { color: var(--text-muted); font-size: 0.88rem; }
-
-    /* Redirect notice */
+    /* ── Redirect notice ── */
     .redirect-notice {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       color: var(--text-muted);
-      font-size: 0.88rem;
-      margin: 12px 0 24px;
+      font-size: 0.9rem;
+      margin: 14px 0 26px;
+      padding: 12px 16px;
+      background: rgba(255,215,0,0.06);
+      border: 1px solid rgba(255,215,0,0.15);
+      border-radius: 12px;
     }
-    #countdown { font-weight: 700; color: var(--gold); }
+    #countdown { font-weight: 800; color: var(--gold); font-size: 1rem; }
 
-    /* Phone Mockup */
+    /* ── Phone Mockup ── */
     .mockup-wrapper {
-      background: linear-gradient(135deg, rgba(20,25,40,0.97) 0%, rgba(5,5,10,0.97) 100%);
-      border: 1px solid rgba(255,215,0,0.22);
-      border-radius: 26px;
-      padding: 24px;
-      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(18,22,42,0.97) 0%, rgba(6,6,14,0.97) 100%);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 28px;
+      padding: 28px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: center;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,215,0,0.08);
     }
     .phone-mockup {
-      background: rgba(10,12,25,0.97);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 30px;
-      padding: 24px 20px;
+      background: rgba(8,10,22,0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 32px;
+      padding: 26px 22px;
       width: 100%;
-      max-width: 340px;
+      max-width: 360px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     .mockup-badges {
       display: flex;
       gap: 10px;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
     .mockup-badge {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
+      gap: 6px;
+      padding: 7px 14px;
       border-radius: 999px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
     }
-    .mockup-badge.seller { background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3); color: var(--gold); }
-    .mockup-badge.tg { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); color: #93c5fd; }
-    .mockup-inner {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
+    .mockup-badge.seller { background: rgba(255,215,0,0.14); border: 1px solid rgba(255,215,0,0.3); color: var(--gold); }
+    .mockup-badge.tg { background: rgba(42,171,238,0.14); border: 1px solid rgba(42,171,238,0.3); color: #93c5fd; }
+    .mockup-inner { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
     .mockup-tinder-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #fd5564, #ff6b35);
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fd5564 0%, #ff6b35 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 2px solid rgba(255,215,0,0.3);
+      border: 2px solid rgba(255,215,0,0.25);
+      box-shadow: 0 6px 20px rgba(253,85,100,0.35);
     }
-    .mockup-text h3 { font-size: 1.05rem; font-weight: 900; margin-bottom: 5px; }
-    .mockup-text p { font-size: 0.8rem; color: var(--text-muted); }
+    .mockup-text h3 { font-size: 1.08rem; font-weight: 900; margin-bottom: 6px; }
+    .mockup-text p { font-size: 0.82rem; color: var(--text-muted); }
     .checklist { list-style: none; }
     .checklist li {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
+      gap: 12px;
+      padding: 13px 16px;
       background: rgba(255,255,255,0.04);
-      border-radius: 12px;
+      border-radius: 13px;
       margin-bottom: 9px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.2s;
     }
+    .checklist li:hover { background: rgba(255,255,255,0.07); transform: translateX(4px); }
 
-    /* Account Years */
-    .years-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .years-header h2 { font-size: 1.45rem; font-weight: 900; }
+    /* ── Account Years ── */
+    .years-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .years-header h2 { font-size: 1.5rem; font-weight: 900; display: flex; align-items: center; gap: 10px; }
     .active-badge {
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
-      background: rgba(255,215,0,0.15);
+      background: rgba(255,215,0,0.14);
       border: 1px solid rgba(255,215,0,0.42);
       color: var(--gold);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(255,215,0,0); }
     }
     .year-item {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 16px 18px;
-      background: rgba(15,20,35,0.72);
-      border: 1px solid rgba(255,215,0,0.16);
+      padding: 17px 20px;
+      background: rgba(14,18,32,0.75);
+      border: 1px solid rgba(255,215,0,0.15);
       border-radius: 16px;
       margin-bottom: 11px;
       font-weight: 700;
-      font-size: 1.05rem;
-      transition: border-color 0.2s;
+      font-size: 1.08rem;
+      transition: all 0.25s;
+      cursor: default;
     }
-    .year-item:hover { border-color: rgba(255,215,0,0.48); }
+    .year-item:hover {
+      border-color: rgba(255,215,0,0.5);
+      background: rgba(22,28,48,0.9);
+      transform: translateX(8px);
+      box-shadow: 0 6px 24px rgba(255,215,0,0.1);
+    }
 
-    /* Profile Cards */
+    /* ── Profile Cards ── */
     .profile-card {
       display: flex;
       align-items: center;
-      gap: 16px;
-      background: rgba(15,20,35,0.72);
+      gap: 18px;
+      background: rgba(14,18,32,0.75);
       border: 1px solid rgba(255,215,0,0.16);
-      border-radius: 20px;
-      padding: 18px 20px;
+      border-radius: 22px;
+      padding: 20px 22px;
       margin-bottom: 14px;
-      transition: border-color 0.2s;
       text-decoration: none;
       color: inherit;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .profile-card:hover { border-color: rgba(255,215,0,0.48); }
+    .profile-card:hover {
+      border-color: rgba(255,215,0,0.5);
+      background: rgba(22,28,48,0.92);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 40px rgba(255,215,0,0.14);
+    }
     .profile-card-img {
-      width: 62px;
-      height: 62px;
+      width: 66px;
+      height: 66px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
-      border: 2.5px solid var(--gold);
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 18px rgba(255,215,0,0.3);
     }
-    /* Telegram logo circle for Join Notice */
     .tg-logo-circle {
-      width: 62px;
-      height: 62px;
+      width: 66px;
+      height: 66px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #2AABEE 0%, #229ED9 100%);
+      background: linear-gradient(145deg, #2AABEE 0%, #1a8fc4 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 2.5px solid #42a5f5;
-      box-shadow: 0 0 16px rgba(42,171,238,0.35);
+      border: 3px solid rgba(42,171,238,0.6);
+      box-shadow: 0 0 20px rgba(42,171,238,0.4);
     }
-    .tg-logo-circle svg {
-      width: 36px;
-      height: 36px;
-    }
-    .profile-card-info p:first-child { color: var(--text-muted); font-size: 0.84rem; margin-bottom: 3px; }
-    .profile-card-info .seller-name { font-size: 1.12rem; font-weight: 800; color: var(--gold); }
-    .profile-card-info .notice-name { font-size: 1.12rem; font-weight: 800; color: #93c5fd; }
+    .tg-logo-circle svg { width: 38px; height: 38px; }
+    .profile-card-info p:first-child { color: var(--text-muted); font-size: 0.86rem; margin-bottom: 4px; }
+    .seller-name { font-size: 1.15rem; font-weight: 800; color: var(--gold); text-shadow: 0 0 12px rgba(255,215,0,0.3); }
+    .notice-name { font-size: 1.15rem; font-weight: 800; color: #93c5fd; text-shadow: 0 0 12px rgba(42,171,238,0.3); }
 
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 22px 0 12px;
-      color: var(--text-muted);
-      font-size: 0.84rem;
-    }
+    /* ── Footer ── */
+    .footer { text-align: center; padding: 24px 0 14px; color: var(--text-muted); font-size: 0.86rem; }
 
-    /* Sticky Bottom */
+    /* ── Sticky Bottom ── */
     .sticky-bottom {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.96);
-      backdrop-filter: blur(14px);
-      border-top: 1px solid rgba(255,215,0,0.22);
-      padding: 14px 18px;
-      z-index: 40;
+      background: rgba(0,0,0,0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(255,215,0,0.2);
+      padding: 14px 20px;
+      z-index: 99;
     }
     .sticky-bottom a {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      max-width: 600px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 18px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--gold) 0%, #e6a800 100%);
+      padding: 19px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #FFD700 0%, #e6a800 50%, #FFD700 100%);
+      background-size: 200% auto;
       color: #000;
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s;
+      box-shadow: 0 6px 28px rgba(255,215,0,0.35);
+      animation: shimmer 3s linear infinite;
     }
-    .sticky-bottom a:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); }
+    .sticky-bottom a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255,215,0,0.5);
+    }
 
-    .section { margin-bottom: 28px; }
+    .section { margin-bottom: 30px; }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2.1rem; }
-      .container { padding: 18px 14px 130px; }
+    /* ── Calendar SVG icon (replacing 📅) ── */
+    .icon-calendar { display:inline-flex; align-items:center; justify-content:center; }
+    /* ── Money/coin SVG icon (replacing 💰) ── */
+    .icon-money { display:inline-flex; align-items:center; justify-content:center; }
+
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 2.2rem; }
+      .container { padding: 20px 14px 140px; }
+      .sticky-header h1 { font-size: 1.15rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Background -->
+  <div class="bg-layer"></div>
+  <div class="particles" id="particles"></div>
+
   <!-- Sticky Header -->
   <header class="sticky-header">
     <h1>
-      <!-- Lightning bolt / speed icon -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       SPEED MARKET PAGE
     </h1>
@@ -444,11 +529,11 @@
   <div class="container">
 
     <!-- Top Header Card -->
-    <div class="header-card">
+    <div class="header-card card-3d reveal">
       <div class="profile-row">
         <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="SPEED MARKET PAGE" class="profile-img"
              onerror="this.style.display='none';document.getElementById('hdr-fallback').style.display='flex'" />
-        <div id="hdr-fallback" style="width:72px;height:72px;border-radius:50%;border:2.5px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;">⚡</div>
+        <div id="hdr-fallback" style="width:78px;height:78px;border-radius:50%;border:3px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;box-shadow:0 0 20px rgba(255,215,0,0.35);">⚡</div>
         <div class="profile-info">
           <h2>SPEED MARKET PAGE</h2>
           <p>Direct Telegram redirect for old Tinder account sellers</p>
@@ -456,7 +541,6 @@
       </div>
       <div class="btn-row">
         <a href="https://t.me/SPEED_NOTICE" class="btn">
-          <!-- Telegram premium channel emoji 5260268501515377807 → rendered as Telegram SVG icon -->
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
           Join Notice
         </a>
@@ -468,7 +552,7 @@
     </div>
 
     <!-- Feature Badges -->
-    <div class="badges section">
+    <div class="badges section reveal">
       <span class="badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         High Price in Market
@@ -480,31 +564,54 @@
     </div>
 
     <!-- Hero -->
-    <div class="hero section">
+    <div class="hero section reveal">
       <h1>SELL <span class="gold">OLD TINDER<br>ACCOUNTS</span> FAST &amp; DIRECT</h1>
       <p>Looking for old Tinder account sellers. Open this page, check needed account years, and message directly on Telegram. Strong premium design, responsive layout, and instant inbox redirect.</p>
     </div>
 
     <!-- Feature Cards -->
     <div class="section">
-      <div class="feature-card">
-        <div class="icon">📅</div>
+      <!-- 📅 replaced with animated calendar SVG (emoji ID 5413879192267805083 = calendar) -->
+      <div class="feature-card card-3d reveal">
+        <div class="feature-icon calendar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="3" stroke="#2AABEE" stroke-width="1.8" fill="rgba(42,171,238,0.1)"/>
+            <path d="M16 2v4M8 2v4M3 10h18" stroke="#2AABEE" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="8" cy="15" r="1.2" fill="#2AABEE"/>
+            <circle cx="12" cy="15" r="1.2" fill="#2AABEE"/>
+            <circle cx="16" cy="15" r="1.2" fill="#2AABEE"/>
+            <circle cx="8" cy="19" r="1.2" fill="#2AABEE" opacity="0.6"/>
+            <circle cx="12" cy="19" r="1.2" fill="#2AABEE" opacity="0.6"/>
+          </svg>
+        </div>
         <div>
           <h3>Old Accounts Needed</h3>
           <p>From 2010 up to 2025, including split 2025 ranges.</p>
         </div>
       </div>
-      <div class="feature-card">
-        <div class="icon">💰</div>
+
+      <!-- 💰 replaced with animated gold coin SVG (emoji ID 6267068789146260253 = money bag/coin) -->
+      <div class="feature-card card-3d reveal">
+        <div class="feature-icon money">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="14" r="8" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="1.8"/>
+            <text x="12" y="18.5" text-anchor="middle" font-size="10" font-weight="900" fill="#FFD700" font-family="Arial">$</text>
+            <ellipse cx="12" cy="6" rx="5" ry="2.5" fill="rgba(255,215,0,0.2)" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M7 6v3c0 1.38 2.24 2.5 5 2.5s5-1.12 5-2.5V6" stroke="#FFD700" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
         <div>
           <h3>High Market Demand</h3>
           <p>Older and well-aged accounts are valuable in the market.</p>
         </div>
       </div>
-      <div class="feature-card">
-        <!-- Telegram icon for Direct Seller Inbox -->
-        <div class="icon">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+
+      <!-- Telegram icon for Direct Seller Inbox -->
+      <div class="feature-card card-3d reveal">
+        <div class="feature-icon telegram-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="#2AABEE">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+          </svg>
         </div>
         <div>
           <h3>Direct Seller Inbox</h3>
@@ -514,40 +621,38 @@
     </div>
 
     <!-- CTA Buttons -->
-    <div class="section">
+    <div class="section reveal">
       <a href="https://t.me/SPEED_prime" class="btn-gold">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         DM @SPEED_prime
       </a>
       <a href="https://t.me/SPEED_NOTICE" class="btn-navy">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         Join @SPEED_NOTICE
       </a>
     </div>
 
     <!-- Auto-redirect notice -->
-    <div class="redirect-notice">
+    <div class="redirect-notice reveal">
       🔄 This page auto redirects to Telegram inbox after <span id="countdown">15</span> seconds.
     </div>
 
     <!-- Phone Mockup -->
-    <div class="mockup-wrapper section">
+    <div class="mockup-wrapper card-3d section reveal">
       <div class="phone-mockup">
         <div class="mockup-badges">
           <span class="mockup-badge seller">
-            <!-- Tinder flame icon -->
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF6B35"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FFD700"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
             Seller Market
           </span>
           <span class="mockup-badge tg">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
             Telegram
           </span>
         </div>
         <div class="mockup-inner">
           <div class="mockup-tinder-icon">
-            <!-- Tinder-style flame -->
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="white"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.17 2.84-7.67 6.72-8.66C9.27 4.77 9 4.15 9 3.5 9 1.57 10.57 0 12.5 0c.28 0 .55.04.8.1C11.85 1.37 11 2.84 11 4.5c0 2.49 2.01 4.5 4.5 4.5.17 0 .33-.01.5-.03C17.28 10.24 18 11.8 18 13.5c0 .55-.09 1.08-.25 1.58C17.5 14.4 17 13.74 17 13c0-1.1-.9-2-2-2s-2 .9-2 2c0 .74.41 1.38 1.01 1.72C13.37 15.5 13 16.47 13 17.5c0 1.93 1.57 3.5 3.5 3.5.19 0 .38-.02.56-.05C15.87 22.23 14.01 23 12 23z"/></svg>
           </div>
           <div class="mockup-text">
             <h3>OLD TINDER ACCOUNTS</h3>
@@ -576,35 +681,35 @@
     </div>
 
     <!-- Needed Account Years -->
-    <div class="section">
+    <div class="section reveal">
       <div class="years-header">
         <h2>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD700" style="vertical-align:middle;margin-right:6px"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFD700"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
           Needed Account Years
         </h2>
         <span class="active-badge">ACTIVE BUYING</span>
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2010 - 2016
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2017 - 2020
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2020 - 2023
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2024
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2025 / 1 - 5
       </div>
-      <div class="year-item">
+      <div class="year-item reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         2025 / 6 - 12
       </div>
@@ -612,19 +717,17 @@
 
     <!-- Bottom Profile Cards -->
     <div class="section">
-      <!-- Sellers DM card -->
-      <a href="https://t.me/SPEED_prime" class="profile-card">
+      <a href="https://t.me/SPEED_prime" class="profile-card card-3d reveal">
         <img src="https://i.postimg.cc/m24KsYjC/IMG-20260328-075851-541.jpg" alt="@SPEED_prime" class="profile-card-img"
              onerror="this.style.display='none';document.getElementById('seller-fallback').style.display='flex'" />
-        <div id="seller-fallback" style="width:62px;height:62px;border-radius:50%;border:2.5px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">👤</div>
+        <div id="seller-fallback" style="width:66px;height:66px;border-radius:50%;border:3px solid #FFD700;background:linear-gradient(135deg,#FFD700,#B8860B);display:none;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;">👤</div>
         <div class="profile-card-info">
           <p>Sellers DM</p>
           <p class="seller-name">@SPEED_prime</p>
         </div>
       </a>
 
-      <!-- Join Notice card — Telegram logo circle -->
-      <a href="https://t.me/SPEED_NOTICE" class="profile-card">
+      <a href="https://t.me/SPEED_NOTICE" class="profile-card card-3d reveal">
         <div class="tg-logo-circle">
           <svg viewBox="0 0 24 24" fill="white">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
@@ -638,7 +741,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer reveal">
       <p>Premium one-page Telegram redirect landing page</p>
     </div>
 
@@ -653,7 +756,47 @@
   </div>
 
   <script>
-    // Auto-redirect after 15 seconds
+    // ── Floating particles ──
+    const particlesEl = document.getElementById('particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 6 + 3;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*10}s;
+        opacity:${Math.random()*0.5+0.1};
+      `;
+      particlesEl.appendChild(p);
+    }
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── 3D tilt on mouse move ──
+    document.querySelectorAll('.card-3d').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `translateY(-6px) rotateX(${-y*10}deg) rotateY(${x*10}deg) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // ── Auto-redirect countdown ──
     let seconds = 15;
     const countdownEl = document.getElementById('countdown');
     const interval = setInterval(() => {
